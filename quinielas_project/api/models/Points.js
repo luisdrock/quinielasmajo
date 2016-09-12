@@ -1,26 +1,22 @@
 /**
- * Usuarios.js
+ * Points.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 
 module.exports = {
-connection: 'Mongodb',
+  connection: 'Mongodb',
   attributes: {
-  	name:{
+  	user: {
   		type: 'string'
   	},
-  	user:{
-  		type: 'string'
+  	total: {
+  		type: 'int'
   	},
-  	pass:{
-  		type: 'string'
-  	},
-  	tipo:{
-  		type: 'string'
-  	},
-  	quiniela: Object 
+  	weeks: {
+  		type: 'int'
+  	}
   }
 };
 

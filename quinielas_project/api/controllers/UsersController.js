@@ -1,20 +1,22 @@
 /**
- * UsuariosController
+ * UsersController
  *
- * @description :: Server-side logic for managing Usuarios
+ * @description :: Server-side logic for managing Users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 module.exports = {
 
 	findAll: function(req, res){
-		Usuarios.find(function(err,usuarios){
+		Users.find(function(err,Users){
 			if (err){
-				res.send(500)
+				res.json({
+					message: 'Error while finding user'
+				})
 			}
-			if(usuarios){
+			if(Users){
 				res.json({
 					message: 'Users found',
-					usuarios: usuarios
+					Users: Users
 				})
 			}
 		})
@@ -24,10 +26,12 @@ module.exports = {
 		
 		var user = req.params.id
 
-		Usuarios.find({id:id}, function(err,user){
+		Users.find({id:id}, function(err,user){
 
 			if(err){
-				res.send(500)
+				res.json({
+					message: 'Error while finding user'
+				})
 			}
 			if(user){
 				res.json({
@@ -46,9 +50,11 @@ module.exports = {
 		body = req.body
 		user = body.user
 		
-		Usuarios.find({user:user},function(err, find){
+		Users.find({user:user},function(err, find){
 			if(err){
-				res.send(500)
+				res.json({
+					message: 'Error while creating user'
+				})
 			}
 
 			if(find.length != 0){
@@ -59,9 +65,11 @@ module.exports = {
 			}
 
 			else{
-				Usuarios.create(body,function(err,created){		
+				Users.create(body,function(err,created){		
 					if(err){
-						res.send(500)
+						res.json({
+							message: 'Error while creating user'
+						})
 					}
 					if(created){
 						res.json({
@@ -77,9 +85,11 @@ module.exports = {
 	update: function (req, res){
 		id = req.params.id;
 		body = req.body;
-		Usuarios.find({id:id}, function(err,find){
+		Users.find({id:id}, function(err,find){
 			if(err){
-				res.send(500)
+				res.json({
+					message: 'Error while updating user'
+				})
 			}
 			if(find.length > 0){
 				
@@ -90,9 +100,11 @@ module.exports = {
 					tipo: find[0].tipo
 				}
 				if(body.user == userpast.user){
-					Usuarios.update({id:id},body, function (err,newname){
+					Users.update({id:id},body, function (err,newname){
 						if(err){
-							res.send(500)
+							res.json({
+								message: 'Error while updating user'
+							})
 						}
 						if(newname){
 							res.json({
@@ -103,9 +115,11 @@ module.exports = {
 					})
 				}
 				else{
-					Usuarios.find({user:body.user},function (err,newuser){
+					Users.find({user:body.user},function (err,newuser){
 						if(err){
-							res.send(500)
+							res.json({
+								message: 'Error while updating user'
+							})
 						}
 						if(newuser.length > 0){
 							res.json({
@@ -113,9 +127,11 @@ module.exports = {
 							})
 						}
 						else{
-							Usuarios.update({id:id},body, function (err,newname){
+							Users.update({id:id},body, function (err,newname){
 								if(err){
-									res.send(500)
+									res.json({
+										message: 'Error while updating user'
+									})
 								}
 								if(newname){
 									res.json({
@@ -134,10 +150,20 @@ module.exports = {
 	delete: function (req, res){
 		body= req.body;
 		user = body.user;
-		Usuarios.find({user:user},function(err,find){
+		Users.find({user:user},function(err,find){
+			if(err){
+				res.json({
+					message: 'Error while deleting user'
+				})
+			}
 			if(find.length == 1){
 				if(find[0].tipo == 'admin'){
-					Usuarios.find({tipo:'admin'},function(err,users){
+					Users.find({tipo:'admin'},function(err,users){
+						if(err){
+							res.json({
+								message: 'Error while deleting user'
+							})
+						}
 						if(users.length == 1){
 							res.json({
 								message: 'Only exists this admin, it can´t be deleted',
@@ -145,17 +171,29 @@ module.exports = {
 							})
 						}
 						else{
-							Usuarios.destroy({user: user}, function (err, deleted){
-								res.json({
-									message: 'User deleted',
-									user: deleted
-								})
+							Users.destroy({user: user}, function (err, deleted1){
+								if(err){
+									res.json({
+										message: 'Error while deleting user'
+									})
+								}
+								if(deleted){
+									res.json({
+										message: 'User deleted',
+										user: deleted1
+									})
+								}
 							})
 						}
 					})
 				}
 				else{
-					Usuarios.destroy({user: user}, function (err, deleted){
+					Users.destroy({user: user}, function (err, deleted){
+						if(err){
+							res.json({
+								message: 'Error while deleting user'
+							})
+						}
 						res.json({
 							message: 'User deleted',
 							user: deleted

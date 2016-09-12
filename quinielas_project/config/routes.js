@@ -45,9 +45,17 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-  'GET /user': 'UsuariosController.findAll',
-  'GET /user/:id': 'UsuariosController.findOne',
-  'POST /user': 'UsuariosController.alta',
-  'DELETE /user': 'UsuariosController.delete',
-  'PUT /user/:id': 'UsuariosController.update'
+
+  ////**********Users Control**********////
+
+  'GET /user': 'UsersController.findAll',
+  'GET /user/:id': 'UsersController.findOne',
+  'POST /user': 'UsersController.alta',
+  'DELETE /user': 'UsersController.delete',
+  'PUT /user/:id': 'UsersController.update',
+
+  ////**********Results Control**********////
+
+  'POST /results' : 'ResultsController.add',
+  'DELETE /results/:id': 'ResultsController.delete'
 };
