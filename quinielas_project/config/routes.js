@@ -33,8 +33,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'homepage'
-  }
+    view: 'principal'
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -45,5 +45,9 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
-
+  'GET /user': 'UsuariosController.findAll',
+  'GET /user/:id': 'UsuariosController.findOne',
+  'POST /user': 'UsuariosController.alta',
+  'DELETE /user': 'UsuariosController.delete',
+  'PUT /user/:id': 'UsuariosController.update'
 };
