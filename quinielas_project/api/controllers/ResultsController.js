@@ -5,7 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
- var date = new Date();
+var date = new Date();
 
 module.exports = {
 	find: function(req,res){
@@ -51,14 +51,11 @@ module.exports = {
 				})
 			}
 			if(find.length>0){
+				year = date.getFullYear();
+				year = year.toString();
+				semana = year + body.semana
+				body.semana = semana.substring(semana.length - 6)
 				for(i = 0; i < find.length; i++){
-					year = date.getFullYear();
-					year = year.toString();
-					semana = year + body.semana
-					body.semana = semana.substring(semana.length - 6)
-					body : {
-						semana = semana
-					}
 					if(find[i].semana == body.semana){
 						res.json({
 							message: 'Already exists this week, just update it'

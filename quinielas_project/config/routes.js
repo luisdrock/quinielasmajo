@@ -57,5 +57,8 @@ module.exports.routes = {
   ////**********Results Control**********////
 
   'POST /results' : 'ResultsController.add',
-  'DELETE /results/:id': 'ResultsController.delete'
+  'DELETE /results/:id': 'ResultsController.delete',
+
+  ////**********Quiniela Control**********////
+  'POST /quiniela' : 'QuinielaController.add'
 };
