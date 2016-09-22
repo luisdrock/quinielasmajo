@@ -14,6 +14,9 @@ module.exports = {
   	semana: {
   		type: 'string'
   	},
+    points: {
+      type: 'int'
+    },
   	results: Object
   }
 };

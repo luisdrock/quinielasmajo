@@ -33,7 +33,15 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'principal'
+    view: 'login'
+  },
+
+  '/dashboard': {
+    view: 'dashboard'
+  },
+
+  '/dashmin':{
+    view: 'dashmin'
   },
 
   /***************************************************************************
@@ -45,6 +53,9 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
+  ////**********Login Control**********////
+  'POST /login' : 'AuthController.login',
 
   ////**********Users Control**********////
 
@@ -59,6 +70,7 @@ module.exports.routes = {
   'POST /results' : 'ResultsController.add',
   'DELETE /results/:id': 'ResultsController.delete',
 
-  ////**********Quiniela Control**********////
-  'POST /quiniela' : 'QuinielaController.add'
+  ////**********QuinielaUser Control**********////
+  'POST /quiniela' : 'QuinielaUserController.add',
+  'POST /quinielapoints': 'QuinielaUserController.points'
 };

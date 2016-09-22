@@ -4,6 +4,7 @@
  * @description :: Server-side logic for managing Users
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
+ 
 module.exports = {
 
 	findAll: function(req, res){
@@ -65,7 +66,7 @@ module.exports = {
 			}
 
 			else{
-				Users.create(body,function(err,created){		
+				Users.create(body,function(err,created){	
 					if(err){
 						res.json({
 							message: 'Error while creating user'

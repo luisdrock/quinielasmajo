@@ -19,7 +19,15 @@ connection: 'Mongodb',
   	},
   	tipo:{
   		type: 'string'
-  	}
+  	},
+    totalpoints:{
+      type: 'int'
+    },
+    allpoints: Object
+  },
+  beforeCreate: function (user, cb){
+    user.pass = crypt.crypt(user.pass);
+    cb()
   }
 };
 

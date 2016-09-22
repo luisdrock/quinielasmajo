@@ -1,7 +1,7 @@
 /**
  * QuinielaController
  *
- * @description :: Server-side logic for managing quinielas
+ * @description :: Server-side logic for managing quinielas, manages the matches' and scores' games
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

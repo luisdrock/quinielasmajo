@@ -1,7 +1,7 @@
 /**
  * ResultsController
  *
- * @description :: Server-side logic for managing Results
+ * @description :: Server-side logic for managing Results, manages the final results' week
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

@@ -11,7 +11,10 @@ module.exports = {
   	semana: {
   		type: 'string'
   	},
-  	results: Object
+  	close: {
+  		type: 'date'
+  	},
+  	games: Object
   }
 };
 

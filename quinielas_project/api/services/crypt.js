@@ -1,13 +1,13 @@
-var crypto = require('crypto');
+var bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
-	crypt: function(name, pass){
-		var hmac = crypto.createHmac('sha1', name).update(pass).digest('hex')
+	crypt: function(pass){
+		var hmac = bcrypt.hashSync(pass);
   		return hmac
 	},
 
-	decrypt: function(name, pass){
-		var hmac = crypto.createHmac('hex', name).update(pass).digest('sha1')
-  		return hmac;
+	decrypt: function(passcom, passfin){
+		correct = bcrypt.compareSync(passcom, passfin)
+  		return correct;
 	}
 }
