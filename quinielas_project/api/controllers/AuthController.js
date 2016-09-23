@@ -18,12 +18,16 @@ module.exports = {
                     user: user
                 });
             }
+
             req.logIn(user, function(err) {
                 if (err) res.send(err);
-                return res.send({
-                    message: info.message,
-                    user: user
-                });
+                tipo = req.user.user.tipo
+                if(tipo == 'admin'){
+                    res.redirect('/dashmin');
+                }
+                else{
+                    res.redirect('/dashboard')
+                }
             });
 
         })(req, res);
